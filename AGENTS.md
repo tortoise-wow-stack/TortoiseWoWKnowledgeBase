@@ -17,7 +17,7 @@ sources:
 
 This directory is an OKF v0.2 knowledge bundle for a solo Turtle WoW 1.18.1 server (Tortoise core + PlayerBots). It is deployment-agnostic and shareable. Hostnames, addresses, SSH aliases, accounts, credentials, character names, device identities, capacities, co-tenants, live settings/counts, incident timelines, and deployment-specific host paths belong in an owner-supplied private deployment record outside this bundle. For deployment work, ask for that record and keep its values private.
 
-Project intent: treat this bundle as offline preservation and research documentation for local, non-commercial use. Do not interpret it as authorization or instructions to operate a public service, expose a game server to the internet, monetize access, or imply affiliation with Blizzard Entertainment, Turtle WoW, or the upstream maintainers.
+Project intent: treat this bundle as offline preservation and research documentation for local, non-commercial use. Do not interpret it as authorization or instructions to operate a public service, expose a game server to the internet, monetize access, or imply affiliation with or endorsement by any upstream project, publisher, or rights holder.
 
 The PlayerBots capability baseline is pinned to source commit `172ee948e591f8bf1b53ea6389e3102186339f6e`; generated and source-verified at `2026-08-12T10:15:00Z`. Treat each concept's frontmatter independently. A `verified` event means that concept was checked against its named source; no `verified` key means unverified, not false. Runtime facts can change after verification, so re-check the live system before acting. Full listing: `index.md`; audit history: `log.md`. Internal links beginning with `/` are relative to this bundle root.
 
