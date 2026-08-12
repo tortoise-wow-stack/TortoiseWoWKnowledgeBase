@@ -15,8 +15,6 @@ sources:
     title: Tortoise WoW PlayerBots fork
 ---
 
-# Upstream resources (link index)
-
 **Related:** [Community findings](/references/community-findings.md) · [Codebase map](/references/codebase-map.md)
 
 ## Repos / forks
