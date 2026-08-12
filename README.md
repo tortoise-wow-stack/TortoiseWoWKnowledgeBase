@@ -31,10 +31,3 @@ This knowledge bundle is based on the work of:
 - [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow) — the PlayerBots-enabled fork used for the source-pinned behavior and command documentation in this bundle.
 
 All credit for the server implementation belongs to the respective upstream authors and contributors. This repository is an independent documentation project and is not an official upstream repository.
-
-## Validation
-
-```bash
-python3 tools/validate_shareability.py
-python3 tools/validate_playerbots_docs.py
-```

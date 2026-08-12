@@ -49,4 +49,3 @@ Ground rules:
 * After SQL edits, prefer `.reload <table>` (list in `ops/reloads.md`); `faction`, `faction_template`, `skill_line_ability`, `spell_template` and `gameobject_template` need a core restart.
 * The server console is the mangosd FIFO (`/opt/turtle/run/mangosd.in`) — write one command line per message, dot prefix optional.
 * Client builds below 7272 are rejected at login. Image choice is deployment-specific: validate CPU compatibility, pin the tested image/source, and preserve a rollback image.
-* Before sharing or publishing this bundle, run `python3 tools/validate_shareability.py` and `python3 tools/validate_playerbots_docs.py`; both must pass.
