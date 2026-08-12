@@ -13,6 +13,8 @@ sources:
     title: Tortoise WoW PlayerBots fork
 ---
 
+![Tortoise WoW Knowledge logo](assets/tortoise-wow-knowledge-logo.png)
+
 A deployment-agnostic knowledge bundle for operating and modifying a solo Turtle WoW 1.18.1 server with the Tortoise core and PlayerBots.
 
 Start with:
