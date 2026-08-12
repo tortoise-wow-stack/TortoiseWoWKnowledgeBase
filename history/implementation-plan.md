@@ -7,14 +7,19 @@ status: stable
 generated: { by: pi/agent, at: 2026-08-11T17:40:00Z }
 verified: { by: process:live-server-audit, at: 2026-08-11T12:00:00Z }
 sources:
-  - id: source
+  - id: original-project
+    resource: https://github.com/Penqle/tortoise-wow
+    title: Original Tortoise WoW repository
+  - id: playerbots-fork
     resource: https://github.com/Shyalya/tortoise-wow
-    title: Tortoise WoW source tree (playerbots-integration-gh)
+    title: Tortoise WoW PlayerBots fork
 ---
 
 **Related:** [Operational gotchas](/ops/gotchas.md) · [Community findings](/references/community-findings.md)
 
-This bundle describes the Tortoise WoW solo-server pattern in general terms. A concrete deployment should follow a phased plan—preflight audit, storage, matching client data, Compose configuration, disposable first boot, login/restart test, then verified backup—and keep its machine identities, endpoints, accounts, image digests, incident history, and acceptance evidence in an owner-supplied private deployment record outside this shareable bundle.
+This bundle documents the lineage originating at [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) and the PlayerBots-enabled fork at [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow). The PlayerBots behavior and command baseline is source-verified against the Shyalya fork; the upstream authors and contributors retain credit for the server implementation.
+
+A concrete deployment should follow a phased plan—preflight audit, storage, matching client data, Compose configuration, disposable first boot, login/restart test, then verified backup—and keep its machine identities, endpoints, accounts, image digests, incident history, and acceptance evidence in an owner-supplied private deployment record outside this shareable bundle.
 
 Design decisions worth knowing (all generic):
 

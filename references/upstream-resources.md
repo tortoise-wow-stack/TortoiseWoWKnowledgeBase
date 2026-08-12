@@ -7,9 +7,12 @@ status: stable
 generated: { by: pi/agent, at: 2026-08-11T18:00:00Z }
 verified: { by: process:live-server-audit, at: 2026-08-11T12:00:00Z }
 sources:
-  - id: source
+  - id: original-project
+    resource: https://github.com/Penqle/tortoise-wow
+    title: Original Tortoise WoW repository
+  - id: playerbots-fork
     resource: https://github.com/Shyalya/tortoise-wow
-    title: Tortoise WoW source tree (playerbots-integration-gh)
+    title: Tortoise WoW PlayerBots fork
 ---
 
 # Upstream resources (link index)
@@ -18,8 +21,8 @@ sources:
 
 ## Repos / forks
 
-- **Shyalya/tortoise-wow** (our base; playerbots fork): <https://github.com/Shyalya/tortoise-wow> — branch `playerbots-integration-gh`; README documents all fork fixes; world DB ships in `sql/base`.
-- **Penqle/tortoise-wow** (active 1.18.1 restoration, daily commits): <https://github.com/Penqle/tortoise-wow> — target build 7272; class/spell fixes (see fix-history); PRs merged regularly.
+- **Penqle/tortoise-wow** (original project): <https://github.com/Penqle/tortoise-wow> — the upstream Tortoise WoW project on which this knowledge ultimately depends.
+- **Shyalya/tortoise-wow** (PlayerBots fork and primary documentation baseline): <https://github.com/Shyalya/tortoise-wow> — branch `playerbots-integration-gh`; the source-pinned PlayerBots documentation in this bundle is verified against this fork.
 - **r-o-sh/tortoise-wow** (playerbots integration origin): <https://github.com/r-o-sh/tortoise-wow/tree/playerbots-integration-gh>
 - **faemwow/tortoise-wow** (mage talents; Docker/Nix builds): <https://github.com/faemwow/tortoise-wow>
 - **Nescabir/tortoise-docker** (our compose packaging): <https://github.com/Nescabir/tortoise-docker>

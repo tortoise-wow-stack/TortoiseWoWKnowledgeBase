@@ -2,6 +2,7 @@
 
 ## 2026-08-12
 
+* **Credits:** Added prominent attribution to the original [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) project and the PlayerBots-enabled [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow) fork used as the source-pinned documentation baseline.
 * **Privacy boundary:** Removed the live deployment-state concept and sanitized host paths, aliases, account examples, topology/capacity observations, live counts/settings, incident artifacts, and deployment-specific commands. Runtime facts now come from an owner-supplied private record plus fresh read-only checks.
 * **Portable operations:** Added deployment-neutral access, topology, backup/restore, extraction, build-hygiene, image-promotion/rollback, migration-validation, and capacity-measurement guidance distilled from private deployment experience.
 
