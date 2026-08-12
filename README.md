@@ -19,7 +19,7 @@ sources:
 
 This repository is an independent, non-commercial offline preservation and technical knowledge project. Its purpose is to preserve the knowledge required to understand, build, and run the referenced open-source server software locally for archival, research, and personal experimentation.
 
-It does not operate, host, or provide access to a public game server. It is not intended for monetization or as a live service, and it is not affiliated with Blizzard Entertainment, Turtle WoW, or the upstream maintainers.
+It does not operate, host, or provide access to a public game server. It is not intended for monetization or as a live service, and it is not affiliated with or endorsed by any upstream project, publisher, or rights holder.
 
 A deployment-agnostic knowledge bundle for operating and modifying a solo Turtle WoW 1.18.1 server with the Tortoise core and PlayerBots.
 
