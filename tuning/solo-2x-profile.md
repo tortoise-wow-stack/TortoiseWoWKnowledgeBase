@@ -34,7 +34,7 @@ sources:
 
 ## Scope
 
-This is a conservative starting point for a private, solo-oriented server. It is a recommendation, not a live-deployment snapshot. Verify every key against the pinned image's `mangosd.conf.dist` and the current rendered configuration before changing it. Turtle character challenges such as War Mode and Slow & Steady add separate XP modifiers, so this profile means **2x base server XP**, not necessarily 2x final XP for every character.
+This is a conservative starting point for a private, solo-oriented server. It is a recommendation, not a live-deployment snapshot. Verify every key against the pinned image's `mangosd.conf.dist` and the current rendered configuration before changing it. Turtle character challenges such as War Mode and Slow & Steady add separate XP modifiers, so this profile means **2x base server XP**, not necessarily 2x final XP for every character. The bundle documents the quest-XP formula more precisely than the kill, exploration, rested-XP, and challenge-ordering paths; verify those paths empirically against the pinned build.
 
 ## First-pass profile
 
@@ -68,8 +68,9 @@ For quests, the documented path is `RewXP × level-decay × Rate.XP.Quest`. A qu
 The final observed XP can also be affected by character and group state:
 
 - War Mode adds 20% XP and forces PvP; Slow & Steady applies its own XP rules and skips the ordinary quest multiplier path documented by this bundle. These challenges are selected when the character is created. The player `xp` command can also toggle XP gain. See [Turtle systems](</tuning/turtle-systems.md:22>).
+- Hardcore is permadeath, while `SoloDungeonRepopAlive.Enable = 1` changes instance-death handling and LFT filters Hardcore players. Do not combine this starter profile with Hardcore until the pinned build's precedence is verified; the generic solo recommendations are not a Hardcore ruleset.
 - `MaxGroupXPDistance` controls the range in which grouped players or bots can share XP; it does not multiply XP. LFT and bot-fill change who is in the group, so test with bots nearby and away.
-- PlayerBot `XPRate` is separate from the player's `Rate.XP.*` settings. The source-pinned behavior notes describe bot XP as server rate × `XPRate`; verify the exact target build before changing it.
+- PlayerBot `XPRate` is separate from the player's `Rate.XP.*` settings. The source-pinned notes describe a server-rate × `XPRate` relationship, but this bundle does not establish whether it applies identically to kill, quest, exploration, rested, group, or dungeon XP, or to every bot type. Do not infer a universal 6x result from the shorthand; verify the exact target build before changing it.
 - Quest completion can award XP and reputation together, but increasing XP does not increase the reputation part. Likewise, 2x XP does not grant extra talent points or automatically keep weapon/profession skills current.
 
 Avoid stacking global creature-difficulty reductions with leech and instance scaling. Those settings make content easier rather than making progression faster, and they can also change the economy indirectly through faster kills or scaled instance money loot.
@@ -105,7 +106,7 @@ When the packaging layer exposes these mappings, put the values in the private `
 
 The `.env` names are packaging inputs, not universal core config keys. Confirm that the target Compose checkout supports each mapping before adding it.
 
-Keep `AutoScalerEnable = 0` for the first pass. The fork documents linear instance HP/damage scaling by player count and group size, with a 5-man floor around 0.6 HP / 0.4 damage and additional 10/20/40-man clamps; it can also generate scaled instance money loot. Test it separately if under-filled dungeons remain too difficult. Combining auto-scaling with bot groups, leech, and alive-on-repop can trivialize encounters.
+Keep `AutoScalerEnable = 0` for the first pass. The fork documents linear instance HP/damage scaling by player count and group size, with a 5-man floor around 0.6 HP / 0.4 damage and additional 10/20/40-man clamps; it can also generate scaled instance money loot, which is separate from `Rate.Drop.Money`. The bundle does not establish whether LFT bots count toward the scaler's player-count input, so test the actual bot-filled party. Combining auto-scaling with bot groups, leech, and alive-on-repop can trivialize encounters.
 
 ## PlayerBots
 
@@ -118,7 +119,7 @@ AiPlayerbot.RandomBotLoginWithPlayer = 1
 
 When those keys are exposed by the deployment's packaging, `AI_MIN_RANDOM_BOTS=10` and `AI_MAX_RANDOM_BOTS=10` are a reasonable initial target. Increase in small steps only after checking world CPU, memory, tick quality, and restart count. Online active bots, not the size of the offline character pool, drive most of the cost.
 
-Audit `AiPlayerbot.XPRate` after changing server XP. The documented behavior describes bot XP as the server rate multiplied by `XPRate`; set `XPRate = 1` if bot progression should track the same effective 2x rate, and verify this against the pinned build before relying on the formula. Keep `AiPlayerbot.CommandServerPort = 0`, and review `BotCheats`/`RndBotCheats` for economy-breaking item or gold assistance.
+Audit `AiPlayerbot.XPRate` after changing server XP. The documented behavior describes bot XP as the server rate multiplied by `XPRate`, but the exact source types and bot populations covered are not specified here. Treat `XPRate = 1` as a hypothesis for matching player progression, not a guaranteed formula, and verify it against the pinned build. Keep `AiPlayerbot.CommandServerPort = 0`, and review `BotCheats`/`RndBotCheats` for economy-breaking item or gold assistance.
 
 ## Optional second-stage QoL
 
@@ -128,6 +129,8 @@ Consider these only after the first pass is stable and the desired progression i
 - `AlwaysMaxSkillForLevel = 1` if weapon and defense skill catch-up is more valuable than the normal skill progression.
 - `AllFlightPaths = 1` if travel convenience is preferred over exploration.
 - A small reputation or money multiplier if solo repair and reputation costs are the actual bottleneck. Avoid changing loot and global creature difficulty as a first response.
+
+Leave `Rate.Talent = 1` unless there is a specific reason to change talent pacing. PlayerBot premade talent links are generated with a matching talent-rate parameter, so changing `Rate.Talent` requires regenerating and validating those links as well.
 
 Do not combine several difficulty-easing changes at once. Change one lever, test the affected gameplay path, and record the intentional override in the private deployment record.
 
@@ -144,7 +147,7 @@ Test the base profile before adding optional modifiers:
 
 ## Persistence and verification
 
-Environment-mapped toggles belong in the private `.env`; other `mangosd.conf` and `aiplayerbot.conf` values need the deployment's supported generated-file or bind-mount path. Never rely on a raw edit inside a running container. After an approved change:
+Environment-mapped toggles belong in the private `.env`; other `mangosd.conf` and `aiplayerbot.conf` values need the deployment's supported generated-file or bind-mount path. The console `reload config` command can reread `mangosd.conf`, but that is a runtime action, not a persistence mechanism, and it does not replace verification after recreation. PlayerBot config reload is separately GM-gated. Never rely on a raw edit inside a running container. After an approved change:
 
 1. Validate the rendered Compose configuration without printing secrets.
 2. Recreate only the affected `mangosd` service through the approved deployment workflow.
