@@ -1,5 +1,9 @@
 # Directory Update Log
 
+## 2026-08-16
+
+* **PlayerBots overview:** Added a source-pinned, deployment-neutral [autonomy and limits](playerbots/autonomy.md) reference. It consolidates random-bot behavior, questing, vendor/AH/mail actions, activation gates, the separate AH market-maker, and known reliability limits without recording live deployment values.
+
 ## 2026-08-12
 
 * **Credits:** Added prominent attribution to the original [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) project and the PlayerBots-enabled [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow) fork used as the source-pinned documentation baseline.

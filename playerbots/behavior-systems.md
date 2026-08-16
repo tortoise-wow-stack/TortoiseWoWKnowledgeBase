@@ -15,7 +15,7 @@ sources:
     resource: https://github.com/Shyalya/tortoise-wow
     title: Tortoise WoW source tree (playerbots-integration-gh)
 ---
-**Related:** [PlayerBots command reference](/playerbots/commands.md) · [PlayerBots architecture](/playerbots/architecture.md)
+**Related:** [PlayerBots autonomy and limits](/playerbots/autonomy.md) · [PlayerBots command reference](/playerbots/commands.md) · [PlayerBots architecture](/playerbots/architecture.md)
 
 
 ## §24 — PlayerBots: behavior systems (what bots can do)

@@ -34,6 +34,7 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 ## playerbots
 
 * [PlayerBots capability map](playerbots/capability-map.md) - Source-pinned public/user-operable surface map and progressive routing.
+* [PlayerBots autonomy and limits](playerbots/autonomy.md) - What random/free bots can do without a master, activation gates, economy behavior, and reliability limits.
 * [PlayerBots architecture](playerbots/architecture.md) - Module layout, core classes, AI tick, strategy/action/trigger system, persistence.
 * [PlayerBots behavior systems](playerbots/behavior-systems.md) - Travel, questing, combat, professions, economy, social, PvP, groups, leveling, cheats.
 * [PlayerBots command reference](playerbots/commands.md) - Router to exact `.bot`/`.rndbot`, chat, filter, action, transport, security, and lifecycle docs.

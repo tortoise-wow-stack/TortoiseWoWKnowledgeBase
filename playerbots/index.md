@@ -5,6 +5,7 @@
 ## Progressive disclosure
 
 * [Capability map](capability-map.md) — start here: public/user-operable surfaces vs internal registries.
+* [Autonomy and limits](autonomy.md) — what random/free bots can do without a master, activation gates, economy behavior, and reliability limits.
 * [In-game usage](in-game-usage.md) — concise operator quickstart and corrected caveats.
 * [`.bot` / `.rndbot` commands](console-commands.md) — exact aliases, parameters, target grammar, and return contracts.
 * [Plain chat surface](chat-surface.md) — all 137 trigger keys, aliases, channels, parsing, and timing.
