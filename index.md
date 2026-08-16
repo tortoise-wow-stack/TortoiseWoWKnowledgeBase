@@ -57,6 +57,7 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 * [DB migrations & SQL workflow](content-creation/db-migrations.md) - How SQL changes are shipped in this repack — migration files, the SHA1 tracking table, the boot-time auto-updater, and the manual sql/tools scripts.
 * [World events & dynamic systems](content-creation/events-world.md) - game_event tables, world buffs, dynamic respawn, weather, periodic systems.
 * [Factions, reputation & professions](content-creation/factions-professions.md) - DB-driven factions, rep rates, skill_line_ability, crafting flow, reloads.
+* [Conditional gossip and quest credit](content-creation/gossip-quests.md) - Data-driven menu text, options, conditions, branches, scripts, and quest credit.
 * [Instances & bosses](content-creation/instances-bosses.md) - map_template, C++ boss mechanics, locks/resets, loot, AutoScaler, LFT.
 * [Items & GameObjects](content-creation/items-gameobjects.md) - item_template and gameobject_template essentials, loot tables, reloads, workflows.
 * [NPCs](content-creation/npcs.md) - creature_template, spawns, vendors, trainers, gossip, EventAI, reloads.
@@ -86,3 +87,4 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 ## workflows
 
 * [Change workflow (the golden path)](workflows/change-playbook.md) - Decision tree for making any change — config, SQL, C++, or client DBC — with the verify loop for each.
+* [Restoration and reverse-engineering workflow](workflows/restoration-playbook.md) - Evidence-first restoration of Turtle behavior, including intentional quirks and concise contribution expectations.

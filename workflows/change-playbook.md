@@ -14,6 +14,8 @@ sources:
 
 **Related:** [Persistence map](/ops/persistence.md) · [Hot-reload commands](/ops/reloads.md) · [Codebase map](/references/codebase-map.md) · [DB migrations](/content-creation/db-migrations.md)
 
+For restoration work, first use the [restoration and reverse-engineering workflow](/workflows/restoration-playbook.md). “Technically correct” is not sufficient when the target is evidenced Turtle behavior, including intentional preservation of upstream quirks.
+
 ## Decide where the change lives
 
 | What you want to change | Where | Apply via | Verify |

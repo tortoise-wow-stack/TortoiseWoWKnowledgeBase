@@ -13,6 +13,9 @@ sources:
   - id: penqle
     resource: https://github.com/Penqle/tortoise-wow
     title: Penqle/tortoise-wow (active restoration)
+  - id: maintainer-direction
+    resource: <maintainer conversation supplied by the repository owner, 2026-08-16>
+    title: Restoration scope and contribution direction
 ---
 
 # Fork fix history & ecosystem
@@ -22,7 +25,7 @@ sources:
 ## Ecosystem (who does what)
 
 - **Shyalya/tortoise-wow** — our base: playerbots integration (r-o-sh's branch vendoring ike3), Turtle solo systems, world DB in repo. The playerbots fixes are listed in its README (BGs, druid forms, healer range, target-value crash, BG mutex, anticheat null pointer, dungeon-fill roles, spec-selection skew, strategy-rebuild 105M/h, custom::learned cache, vfprintf `%` abort).
-- **Penqle/tortoise-wow** — the ACTIVE 1.18.1 restoration (daily commits, ~380 PRs): class/spell passes (hunter, rogue, warrior, mage...), content fixes (gameobjects, quests), solo additions (Autoscale, Leech, Additional Talent Points), Eluna planned, playerbots "basic". Target build 7272. Its methodology: apply spell fixes via **`spell_mod`** to keep `spell_template` matching client data ("that's not how it was in 1.17.1" caveat) — a useful technique for our own spell work.
+- **Penqle/tortoise-wow** — the active 1.18.1 restoration: class/spell passes (hunter, rogue, warrior, mage...), content fixes (gameobjects, quests), and historical solo additions (Autoscale, Leech, Additional Talent Points). Target build 7272. Its methodology: apply spell fixes via **`spell_mod`** to keep `spell_template` matching client data ("that's not how it was in 1.17.1" caveat) — a useful technique for our own spell work.
 - **faemwow/tortoise-wow** — mage talent pass source; Docker/Nix build support.
 - **r-o-sh/tortoise-wow** — playerbots-integration origin branch.
 
@@ -41,3 +44,7 @@ Graveyards (Barrens, Arathi, dungeon sub-zones); 18 trainers + Survival artisan 
 ## Implication for agents
 
 Before writing a "fix", check: Shyalya README (base fixes), Penqle commit history (latest restoration state), and `sql/tools/` (known manual fixes). Prefer `spell_mod` over editing `spell_template` when the client data must stay authoritative.
+
+## Restoration policy
+
+The maintainer's stated target is close restoration rather than a corrected redesign. Evidence that real Turtle shipped a bug can make preserving or recreating that bug the correct outcome. Historical scaling/leech work belongs to the repository's earlier personal-server phase and does not broaden the restoration target. Use the [restoration workflow](/workflows/restoration-playbook.md) before applying generic MaNGOS best practice to observed Turtle content.
