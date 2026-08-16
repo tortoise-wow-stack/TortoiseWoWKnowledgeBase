@@ -3,6 +3,8 @@
 ## 2026-08-16
 
 * **PlayerBots overview:** Added a source-pinned, deployment-neutral [autonomy and limits](playerbots/autonomy.md) reference. It consolidates random-bot behavior, questing, vendor/AH/mail actions, activation gates, the separate AH market-maker, and known reliability limits without recording live deployment values.
+* **Gossip model:** Added a source-pinned explanation of conditional gossip, page selection, option branching, broadcast text, DB-script side effects, and the distinct quest-credit mechanisms.
+* **Restoration policy:** Added an evidence-first restoration playbook covering intentional upstream bugs, gameplay capture, negative-state testing, migration discipline, and concise LLM-assisted contribution expectations.
 
 ## 2026-08-12
 

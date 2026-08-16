@@ -26,6 +26,8 @@ Read the file that matches the task — each is self-contained:
 * **Check / restart / monitor a deployment** → obtain its private deployment record, then use `ops/access-status.md` + `ops/everyday-tasks.md`
 * **Change server values (rates, limits, solo systems)** → `tuning/index.md`
 * **Add or edit content (NPC, quest, item, spell, boss, event)** → `content-creation/index.md`
+* **Restore / reverse-engineer Turtle behavior (including intentional bugs)** → `workflows/restoration-playbook.md`
+* **Fix conditional gossip or gossip-driven quest credit** → `content-creation/gossip-quests.md`
 * **Work with bots (commands, config, modification)** → `playerbots/index.md` → `playerbots/capability-map.md`; exact command syntax is in `console-commands.md`, chat/`@` filters in `chat-surface.md` + `audience-filters.md`, addon integration in `addon-transport.md`, and ownership/failures in `security-failures.md`.
 * **Admin actions via SQL or console** → `ops/admin-recipes.md`, `ops/console.md`, `ops/reloads.md`
 * **External integrations (transfer API, Discord, donation shop, shellcoins, 2FA)** → `integrations/external-systems.md`

@@ -15,12 +15,12 @@ sources:
     resource: https://github.com/Shyalya/tortoise-wow
     title: Tortoise WoW source tree (playerbots-integration-gh)
 ---
-**Related:** [NPCs](/content-creation/npcs.md) · [Spells](/content-creation/spells.md)
+**Related:** [NPCs](/content-creation/npcs.md) · [Spells](/content-creation/spells.md) · [Conditional gossip and quest credit](/content-creation/gossip-quests.md)
 
 
 ## §15 — Content creation: Quests (verified)
 
-**quest_template essentials** (snake_case, mangos-zero + Tortoise additions; NO `Repeatable` column — repeatable = SpecialFlags bit 0x001, daily = 0x004; NO `RewMoneyDifficulty`):
+**quest_template essentials** (mixed legacy naming, mangos-zero + Tortoise additions; NO `Repeatable` column — repeatable = SpecialFlags bit 0x001, daily = 0x004; NO `RewMoneyDifficulty`):
 
 | Purpose | Columns |
 | --- | --- |
@@ -38,6 +38,8 @@ sources:
 
 **XP:** `Quest::XPValue` — RewXP × decay (≤ q+25 = 100% … q+30+ = 10%) × `Rate.XP.Quest` (skipped for Slow&Steady; War Mode ×1.2). At max level → `RewMoneyMaxLevel` instead.
 
-**Scripting: NO SmartAI in this fork (zero matches).** DB-only: `quest_start_scripts`/`quest_end_scripts` (SD2-style: id, delay, command, datalong…, x/y/z/o, condition_id — commands include summon/cast/move/emote/say/quest complete 7/map-event 61), `quest_greeting` (greeting text + emote), `quest_cast_objective` (per-objective spellcast filters), `conditions`. **C++ needed only for:** `script_name` AI, escorts/cutscenes, ScriptedMapEvents. A plain kill/collect quest is 100% DB.
+**Scripting: NO SmartAI in this fork (zero matches).** DB-only: `quest_start_scripts`/`quest_end_scripts` (SD2-style: id, delay, command, datalong…, x/y/z/o, condition_id — commands include summon/cast/move/emote/say, exploration/event credit command 7, and map-event command 61), `quest_greeting` (greeting text + emote), `quest_cast_objective` (per-objective spellcast filters), `conditions`. **C++ needed only for:** `script_name` AI, escorts/cutscenes, ScriptedMapEvents. A plain kill/collect quest is 100% DB.
+
+Talk-to-NPC and quiz objectives may also use `gossip_menu_option.action_script_id` → `gossip_scripts`. Trace the objective entry before choosing among ordinary `TalkedToCreature`, DB-script kill credit, and exploration/event completion; see [Conditional gossip and quest credit](/content-creation/gossip-quests.md).
 
 **Reload:** `.reload quest_template` (also loads GO-for-quests), plus `quest_start_scripts`, `quest_end_scripts`, `quest_greeting`, `creature_questrelation`, `creature_involvedrelation`, `gameobject_questrelation`, `gameobject_involvedrelation`, `areatrigger_involvedrelation`, `locales_quest`, `points_of_interest`.
