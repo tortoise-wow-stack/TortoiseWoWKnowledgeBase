@@ -27,6 +27,7 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 * [Env-driven config](tuning/env-config.md) - The .env variables that override config keys at every container start.
 * [GM command cheat-sheet](tuning/gm-commands.md) - In-game GM commands by purpose with security levels.
 * [Server rates & limits](tuning/rates-limits.md) - All Rate.* multipliers, limits and solo-play systems in mangosd.conf.
+* [Server rate tuning and validation](tuning/rate-tuning-guide.md) - How to change XP, rewards, combat, skills, and related rate families while validating interactions and persistence.
 * [Skills & talents data map](tuning/skills-talents.md) - What lives in DB (spell_template, skill_line_ability) vs DBC (talents).
 * [Turtle systems](tuning/turtle-systems.md) - Challenges (Hardcore/War Mode/...), Glyphs, LFT, Transmog, AutoDonation, world buffs.
 
