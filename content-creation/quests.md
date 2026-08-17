@@ -17,7 +17,6 @@ sources:
 ---
 **Related:** [NPCs](/content-creation/npcs.md) · [Spells](/content-creation/spells.md) · [Conditional gossip and quest credit](/content-creation/gossip-quests.md)
 
-
 ## §15 — Content creation: Quests (verified)
 
 **quest_template essentials** (mixed legacy naming, mangos-zero + Tortoise additions; NO `Repeatable` column — repeatable = SpecialFlags bit 0x001, daily = 0x004; NO `RewMoneyDifficulty`):
@@ -35,6 +34,10 @@ sources:
 | Rewards | `RewXP` (**must be set — 0 = 0 XP**), `RewOrReqMoney` (neg = cost), `RewMoneyMaxLevel`, `RewSpell(Cast)`, `RewItemId1-4(Count)`, `RewChoiceItemId1-6(Count)`, `RewRepFaction1-5(Value)`, `RewMailTemplateId/DelaySecs/Money` |
 | POI | `PointMapId`, `PointX`, `PointY` (no quest_poi tables in this fork) |
 | Scripts | `StartScript`, `CompleteScript` → `quest_start_scripts` / `quest_end_scripts` |
+
+**Prerequisite triage:** Level eligibility is only one gate. For a quest that does not appear, inspect `PrevQuestId`, `RequiredCondition`, `RequiredClasses`/`RequiredRaces`, and both `creature_questrelation` and `creature_involvedrelation`. A `PrevQuestId` normally requires the predecessor to be rewarded, not merely accepted or temporarily marked complete; confirm the deployed core before relying on a GM shortcut. Walk the chain backwards until the first missing relation or unmet condition is found.
+
+For item-gated steps, trace the requirement instead of searching by NPC name alone: read `ReqItemId1-4` and counts from `quest_template`, find the relevant `loot_id` or `gameobject` relation, then query the matching `creature_loot_template`/`gameobject_loot_template` row. A quest item that is present in `quest_template` but absent from every reachable loot or script path is a content gap, not a level restriction. Test both the natural predecessor path and the isolated objective path; GM commands can hide chain, condition, loot, and payment defects.
 
 **XP:** `Quest::XPValue` — RewXP × decay (≤ q+25 = 100% … q+30+ = 10%) × `Rate.XP.Quest` (skipped for Slow&Steady; War Mode ×1.2). At max level → `RewMoneyMaxLevel` instead.
 

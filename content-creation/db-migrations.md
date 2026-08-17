@@ -42,6 +42,10 @@ The first database may be considered disposable only until those checks pass. On
 1. Direct SQL plus `.reload <table>` is suitable for an intentional one-off deployment change when the table supports reload and the operation is recorded privately.
 2. A world change that must survive fresh installation belongs in a timestamped world update and the relevant base schema when appropriate.
 3. A character or logon schema change needs both fresh-install coverage and a migration route proven end to end through the actual packaging. Do not assume suffix support.
+
+A gossip branch is a graph, not one row. A durable migration must ship every referenced condition, page text, option, action script, quest relation, item/vendor row, and NPC flag together; validate the references after applying the file. Keep the migration's table writes coherent, then reload runtime tables in dependency order (`conditions` → `gossip_scripts` → `gossip_menu_option`, plus any vendor/template tables). The initializer may continue after content errors, so a successful migration command or boot line is not proof that the branch loaded.
+
+A live SQL write followed by a reload is a useful diagnostic hotfix, but it is not a source fix: it will be lost when the database is rebuilt from packaged base/update files unless the same change is committed to a timestamped world update and covered by fresh-install verification.
 4. Boot-loaded tables such as `spell_template`, `faction`, `faction_template`, `skill_line_ability`, and `gameobject_template` require a world restart after application.
 5. Before release, restore a representative dump into an isolated database, apply the candidate image, verify migration state, require current-process readiness, and run the affected in-game check.
 
