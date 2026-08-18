@@ -5,7 +5,7 @@ description: Source-derived cost model, tuning levers, and a deployment-neutral 
 tags: [playerbots, performance, capacity]
 resource: https://github.com/Shyalya/tortoise-wow/tree/172ee948e591f8bf1b53ea6389e3102186339f6e/src/modules/PlayerBots/playerbot
 status: stable
-generated: { by: pi/agent, at: 2026-08-12T12:00:00Z }
+generated: { by: pi/agent, at: 2026-08-18T17:00:00Z }
 verified: { by: process:source-audit, at: 2026-08-12T10:15:00Z }
 sources:
   - id: source-commit
@@ -41,6 +41,25 @@ Do not copy a bot-count ceiling from another machine. CPU generation, core alloc
 5. Increase online bots in small steps. Change only one timing/activity lever between runs.
 6. Stop before sustained CPU saturation, memory pressure, growing tick latency, or degradation of co-tenants.
 7. Re-run after source, image, map, hardware, or major strategy changes.
+
+## Reading the performance log (`perf.log`)
+
+The world monitor writes `Update single map <id> inst <n>` and `Update map system` lines **only when an update exceeds `PerformanceLog.SlowMapUpdate` (default 200 ms)** — absence of lines is not proof of health, and any average computed from the log is worst-case-biased.
+
+Per-map breakdown fields (single-map lines):
+
+- `sess` — session processing; `players` / `players2` — the two player-update passes (PlayerBots AI and movement live here and dominate with large bot populations); `cells` — grid/cell updates (single-threaded on continents by default via `MapUpdate.Continents.MTCells.Threads`, while instanced maps get `MapUpdate.Instanced.UpdateThreads`); `sendObjUpdates` — object packet building; `relocations` — movement relocation; `wait N <ms>` — time this map's thread blocked on the map-system barrier.
+
+`Update map system` totals the barrier across maps: the world loop paces at the **slowest** map, so per-continent work does not overlap past the boundary. A `wait` of seconds between maps means the system tick is dominated by one overloaded continent.
+
+Ramp-up is not steady state: with sync login (`AsyncBotLogin = 0`) logins load characters, grids, and map tiles on the world thread, so mass login inflates ticks for minutes. Measure settled state only after `Login Character` lines in `char.log` stop growing, and remember that every restart replays the ramp when `RandomBotLoginAtStartup`/`RandomBotAutologin` are enabled.
+
+## Empirical capacity notes (single deployment, mixed levels)
+
+- With always-active mode, settled world-tick cost scaled roughly linearly with online bots (~1 ms per bot per map tick on the observed deployment): 50 bots ≈ 27 ms, 1,000 ≈ 0.5 s, 2,000 ≈ 1–3.4 s ticks. Treat these as order-of-magnitude anchors, not a portable ceiling — see the measurement procedure above.
+- Ticks of 200–300 ms play like a ~250 ms-ping server: usable for solo PvE (questing, grinding, bot parties), not for reactive PvP. The 50 ms `MapUpdateInterval` budget is the ideal, not the achievable norm at scale.
+- `RandomBotUpdateInterval` is manager-level (pool changes, teleports), **not** per-bot AI cadence; per-bot pacing is `ReactDelay` / `PassiveDelay` / `IterationsPerTick`.
+- `AsyncBotLogin = 1` is documented as moving login off the world thread, but on at least one live image it wedged logins in an endless retry loop (see [ops gotchas](/ops/gotchas.md)); verify it on your image with a small population before relying on it at scale.
 
 ## Instrumentation
 

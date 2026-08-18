@@ -10,10 +10,10 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 
 * [Access & status](ops/access-status.md) - How to reach the VM and confirm the world server is alive.
 * [Accounts & permissions](ops/accounts.md) - Accounts, security levels (rank 0-6), how GM rights apply and refresh.
-* [Admin recipes via DB](ops/admin-recipes.md) - Verified SQL: who is online, kick, password reset, gold, mail items, delete characters.
+* [Admin recipes via DB](ops/admin-recipes.md) - Verified SQL: who is online, kick, password reset, gold, mail items, delete characters, reset the bot pool.
 * [Server console & server control](ops/console.md) - Console command set, pending_commands DB queue, server shutdown/restart.
 * [Everyday tasks](ops/everyday-tasks.md) - Verbatim commands for restart, logs, console, coins, bot count, backup.
-* [Operational gotchas](ops/gotchas.md) - Client build gate, local image, DNS override, benign noise, volume pairs, handoff.
+* [Operational gotchas](ops/gotchas.md) - Client build gate, image portability, build hygiene, migration safety, config persistence, command targeting.
 * [Housing & character services](ops/housing-services.md) - Guild housing (teleport bookmarks), shop-token character services (rename/race/appearance), and the variable/worldstate persistence.
 * [Logs, monitoring & recovery](ops/logs-monitoring.md) - Log files and levels, .perf, crash recovery, AutoRestart, db-init migrations, disk growth.
 * [Persistence map](ops/persistence.md) - Which config edits survive container recreates, ranked, with caveats.
@@ -44,12 +44,12 @@ Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW serv
 * [PlayerBots addon transport](playerbots/addon-transport.md) - `debug`, raw addon responses, `#a`, and optional TCP framing.
 * [PlayerBots security and failures](playerbots/security-failures.md) - Ownership gates and exact failure strings.
 * [PlayerBots community documentation (ike3 line)](playerbots/community-docs.md) - The canonical ike3 mangosbot docs, community settings for solo servers, known issues, and the cmangos-fork feature diff.
-* [PlayerBots config](playerbots/config.md) - aiplayerbot.conf inventory: population, behavior, premade specs, AhBot.
+* [PlayerBots config](playerbots/config.md) - aiplayerbot.conf inventory: population, activity modes, behavior, chat throttling, premade specs, AhBot.
 * [Bot creation pipeline & random-bot pool](playerbots/factory-pool.md) - How bots are created (Randomize phases, race/class/name/gear/professions/talents) and the random-bot pool lifecycle (events, teleports, re-randomize).
 * [PlayerBots in-game usage](playerbots/in-game-usage.md) - How to command bots in-game: .bot, chat triggers, strategies, groups.
 * [PlayerBots LLM & chat systems](playerbots/llm-chat.md) - The bot chat pipeline — scripted texts, broadcasts, speak/talk/say commands — and the LLM roleplay integration (plumbed but stubbed at the network layer).
 * [PlayerBots modification](playerbots/modification.md) - Config keys inventory, SQL tables, custom strategy/action pattern, texts, travel data.
-* [PlayerBots performance & capacity](playerbots/performance.md) - Source-derived cost model, high-impact levers, and a deployment-neutral capacity measurement procedure.
+* [PlayerBots performance & capacity](playerbots/performance.md) - Source-derived cost model, high-impact levers, perf.log anatomy, and a deployment-neutral capacity measurement procedure.
 
 ## content-creation
 
