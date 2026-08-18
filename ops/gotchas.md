@@ -4,7 +4,7 @@ title: Operational gotchas
 description: Client build gate, image portability, build hygiene, migration safety, shell pipelines, and command targeting.
 tags: [ops, gotchas]
 status: stable
-generated: { by: pi/agent, at: 2026-08-12T12:00:00Z }
+generated: { by: pi/agent, at: 2026-08-18T17:00:00Z }
 sources:
   - id: source
     resource: https://github.com/Shyalya/tortoise-wow
@@ -27,3 +27,7 @@ sources:
 - **Initializer false success:** error-tolerant SQL execution can continue after a failed statement. Preserve the full initializer log, inspect SQL errors, assert required schema/migration state, and prove current-process world readiness.
 - **MMAP generation:** this fork may return a nonzero completion code in silent mode. Accept it only with independent completeness checks: expected map coverage, non-empty required GameObject navmeshes, and no failure lines.
 - **`.additem` targeting:** `.additem` acts on the current target. Clear the target before giving an item to yourself; with a bot targeted, the item can land in the bot's bags.
+- **Async bot login can wedge logins (observed on one live image):** `AiPlayerbot.AsyncBotLogin = 1` produced an endless login retry loop (one character reloaded tens of thousands of times in the SQL log), a `[Crash]: Removing object which is already removed` guard line, and an unresponsive world console; reverting to `0` (sync login) cleared it immediately. Upstream documents it as "faster logins, heavy DB use at start"; verify on your image with a small population before enabling at scale.
+- **Declared env vars are not always applied:** a Compose file may declare `AI_*` overrides that the config renderer never consumes (observed: `AI_BROADCAST_TO_WORLD_GLOBAL_CHANCE` declared in the mangosd service but not applied by `render-config.sh`). Verify the rendered value inside the container (`grep` the generated conf) instead of trusting the Compose file.
+- **Container-layer config persistence:** config edits made inside a running container survive `docker restart` but are lost when the container is recreated (`compose up -d` after any env change). Keys re-rendered from env at every start survive recreation; hand-edited keys do not. Make conf changes env-driven (or baked into the image) for durability.
+- **Restart cost with login-at-startup:** every restart replays the full bot login ramp on the world thread when `RandomBotLoginAtStartup` / `RandomBotAutologin` are enabled; repeated restarts during tuning multiply the ramp cost and the SQL-log flood.

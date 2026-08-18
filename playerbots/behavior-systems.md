@@ -5,7 +5,7 @@ description: Travel, questing, combat, professions, economy, social, PvP, groups
 tags: ["playerbots", "behavior"]
 resource: https://github.com/Shyalya/tortoise-wow/tree/playerbots-integration-gh/src/modules/PlayerBots/playerbot
 status: stable
-generated: { by: pi/agent, at: 2026-08-11T15:30:00Z }
+generated: { by: pi/agent, at: 2026-08-18T17:00:00Z }
 verified: { by: process:live-server-audit, at: 2026-08-11T12:00:00Z }
 sources:
   - id: live-server
@@ -31,6 +31,8 @@ Every behavior = a **strategy** (strategy/generic/*.cpp) registering TriggerNode
 **Professions:** chat `craft [itemId]` (finds recipe, collects reagents, crafts, trades with fee — `GetCraftFee`); guild craft orders (members order, bots with recipe craft); gathering = reveal nearby ore/herbs + travel to gather spots; bots get random professions/recipes at creation (PlayerbotFactory::InitTradeSkills) and visit trainers.
 
 **Economy:** `ah`/`ah bid` chat words (price from per-item cache; one bot at a time); `sell`/`buy`/`repair`; BudgetValues drive vendoring (ShouldGetMoney); `BotCheats=gold` = free money.
+
+**Auction-house mechanics (observed on a live deployment):** free bots list looted items with an initial bid and a buyout ~5% apart and 24-hour durations, buy other bots' listings by buyout, and receive winnings by mail. `AhBot` is a separate single-character market-maker (`AhBot.GUID` names the auctioneer character) that fabricates listings — it posts "on behalf of others" to make the AH look populated, with no bot gameplay (looting/grinding) behind it. With `AhBot.Enabled = 0` and the legacy `AuctionHouseBot` seller/buyer off, all AH traffic is real bot-to-bot activity; enabling AhBot adds cosmetic filler, not economy.
 
 **Social:** greetings (EnableGreet), broadcasts (EnableBroadcasts + per-channel chances: world/general/guild/trade/LFG…), combat callouts ("say::critical health" etc.), guilds (create/join/meetings via travel), custom::say DB strategies.
 

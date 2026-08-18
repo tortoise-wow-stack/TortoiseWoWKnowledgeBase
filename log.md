@@ -1,5 +1,12 @@
 # Directory Update Log
 
+## 2026-08-18
+
+* **PlayerBots activity modes:** documented the two scheduling modes behind `DisableActivityPriorities` (always-active vs the activity-priority bracket system), the `botActiveAlone` bottom-bracket scope, chat/broadcast throttling gates, and the fresh level-1 start gotchas (`RandomBotMaxLevelChance`, six-zone crowding) in [config](playerbots/config.md). Bracket internals are maintainer-communicated and marked as such; the rest is `.dist`-derived.
+* **Performance reading:** added [perf.log anatomy](playerbots/performance.md) (per-map breakdown fields, threshold bias, ramp-vs-steady-state, map barrier pacing) plus empirical capacity anchors and the async-login hazard.
+* **Economy mechanics:** extended [behavior systems](playerbots/behavior-systems.md) with observed auction-house mechanics (bots list/buy/mail) and the AhBot market-maker clarification.
+* **Ops lessons:** added [gotchas](ops/gotchas.md) (async-login wedge, declared-but-unapplied env vars, container-layer conf persistence, restart ramp cost), a [fresh level-1 pool reset recipe](ops/admin-recipes.md), and log-growth patterns ([logs & monitoring](ops/logs-monitoring.md)).
+
 ## 2026-08-16
 
 * **PlayerBots overview:** Added a source-pinned, deployment-neutral [autonomy and limits](playerbots/autonomy.md) reference. It consolidates random-bot behavior, questing, vendor/AH/mail actions, activation gates, the separate AH market-maker, and known reliability limits without recording live deployment values.
