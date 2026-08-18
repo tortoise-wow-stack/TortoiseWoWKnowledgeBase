@@ -95,6 +95,16 @@ Other systems can change what a player observes without changing the selected ra
 - Turtle character challenges such as War Mode and Slow & Steady have their own XP behavior; War Mode adds 20% XP and forces PvP, while the quest documentation says Slow & Steady skips the ordinary quest multiplier path. Challenges are selected at character creation. The player `xp` command can also toggle XP gain. See [Turtle systems](</tuning/turtle-systems.md:22>).
 - `MaxGroupXPDistance` controls the range in which grouped players or bots can share XP; it does not multiply XP. Group composition and distance must be part of an XP test.
 - PlayerBot `XPRate` is separate from the player's `Rate.XP.*` settings. The source-pinned notes describe a server-rate × `XPRate` relationship, but this bundle does not establish whether it applies identically to kill, quest, exploration, rested, group, or dungeon XP, or to every bot type. Verify the target build before changing it.
+
+For the pinned PlayerBots baseline, `aiplayerbot.conf` states the relationship as:
+
+```text
+bot XP multiplier = server XP rate × AiPlayerbot.XPRate
+```
+
+This means a server-wide XP change can accelerate bots even when no bot setting is changed. If the intended effective bot multiplier is `B` and the relevant server multiplier is `S`, the compensating value is `AiPlayerbot.XPRate = B / S`; for example, preserving 3x bot progression while changing all three ordinary player XP sources to 2x uses `XPRate = 1.5`. This changes bot progression only; it does not change the real player's XP rate. Validate the target build's kill, quest, exploration, group, and dungeon paths before assuming the formula applies identically to every bot type or XP source. The distributed baseline contains `AiPlayerbot.XPRate = 3` despite an adjacent comment saying the default is 1, so use the rendered target configuration as the authority.
+
+`reload config` rereads `mangosd.conf`; PlayerBots configuration has a separate GM-gated reload path. An in-container edit is temporary and is overwritten when the service is recreated unless the deployment persists `aiplayerbot.conf` through its supported configuration path.
 - Quest completion can award XP and reputation together, but increasing XP does not increase the reputation part. Likewise, an XP change does not grant extra talent points or automatically keep weapon/profession skills current.
 
 Related difficulty and convenience systems are not substitutes for rates. Leech, alive-on-repop, LFT bot fill, instance entry gates, and `AutoScalerEnable` change survivability, group formation, eligibility, or instance difficulty. AutoScaler can also generate scaled instance money loot, which is separate from `Rate.Drop.Money`; the bundle does not establish whether LFT bots count toward its player-count input. Test these systems independently from reward-rate changes.
