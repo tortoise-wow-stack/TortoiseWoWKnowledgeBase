@@ -13,7 +13,7 @@ sources:
     title: Tortoise WoW PlayerBots fork
 ---
 
-![Tortoise WoW Knowledge logo](assets/logo.png)
+![Tortoise WoW Knowledge logo](assets/logo.jpg)
 
 ## Purpose
 
