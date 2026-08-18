@@ -1,19 +1,13 @@
----
-type: Guide
-title: Tortoise WoW Knowledge
-description: Repository entry point for the deployment-agnostic offline-preservation Tortoise WoW knowledge bundle.
-tags: [guide, repository]
-status: stable
-sources:
-  - id: original-project
-    resource: https://github.com/Penqle/tortoise-wow
-    title: Original Tortoise WoW repository
-  - id: playerbots-fork
-    resource: https://github.com/Shyalya/tortoise-wow
-    title: Tortoise WoW PlayerBots fork
----
-
 ![Tortoise WoW Knowledge logo](assets/logo.jpg)
+
+| Metadata | Value |
+| --- | --- |
+| Type | Guide |
+| Title | Tortoise WoW Knowledge |
+| Description | Repository entry point for the deployment-agnostic offline-preservation Tortoise WoW knowledge bundle. |
+| Tags | guide, repository |
+| Status | stable |
+| Sources | [Original Tortoise WoW repository](https://github.com/Penqle/tortoise-wow), [Tortoise WoW PlayerBots fork](https://github.com/Shyalya/tortoise-wow) |
 
 ## Purpose
 
