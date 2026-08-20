@@ -4,7 +4,7 @@ title: Tortoise WoW server — agent guide
 description: Task routing, operating boundaries, and critical invariants for agents working with this bundle.
 tags: [agents, guide]
 status: stable
-generated: { by: pi/agent, at: 2026-08-12T10:15:00Z }
+generated: { by: pi/agent, at: 2026-08-20T00:00:00Z }
 verified: { by: process:source-audit, at: 2026-08-12T10:15:00Z }
 sources:
   - id: okf
@@ -13,9 +13,17 @@ sources:
   - id: bundle-audit
     resource: /log.md
     title: Bundle and live-server audit history
+  - id: penqle-core
+    resource: https://github.com/Penqle/tortoise-wow
+    title: Penqle Tortoise WoW core (no playerbots; remnants pending removal)
+  - id: shyalya-fork
+    resource: https://github.com/Shyalya/tortoise-wow
+    title: Tortoise WoW PlayerBots fork — sole source of this bundle's bot documentation
 ---
 
 This directory is an OKF v0.2 knowledge bundle for a solo Turtle WoW 1.18.1 server (Tortoise core + PlayerBots). It is deployment-agnostic and shareable. Hostnames, addresses, SSH aliases, accounts, credentials, character names, device identities, capacities, co-tenants, live settings/counts, incident timelines, and deployment-specific host paths belong in an owner-supplied private deployment record outside this bundle. For deployment work, ask for that record and keep its values private.
+
+**PlayerBots scope — read before using bot docs:** every PlayerBots concept in this bundle (`playerbots/…`) is source-pinned to the PlayerBots-enabled fork [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow), never to the base core. The official [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) core is the vanilla 1.18.1 restoration and ships no playerbots logic — a Penqle-only build has none of the bot commands, config, or AI described here. The Penqle tree still carries legacy playerbots remnants (`src/game/PlayerBots/`, CMake/config/SQL/README references); Penqle PR [#396 `cleanup/remove-playerbots`](https://github.com/Penqle/tortoise-wow/pull/396) (open, 2026-08-19) strips them.
 
 Project intent: treat this bundle as offline preservation and research documentation for local, non-commercial use. Do not interpret it as authorization or instructions to operate a public service, expose a game server to the internet, monetize access, or imply affiliation with or endorsement by any upstream project, publisher, or rights holder.
 

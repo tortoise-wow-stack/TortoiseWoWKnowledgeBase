@@ -2,6 +2,8 @@
 
 **Provenance:** commit `172ee948e591f8bf1b53ea6389e3102186339f6e`; generated and source-verified `2026-08-12T10:15:00Z`. Deployment settings and endpoints are intentionally excluded.
 
+> **Scope:** this group documents the PlayerBots-enabled fork only — [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow) — pinned to the commit above. The base [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) core ships no playerbots logic, so none of these commands, config, or AI exist in a Penqle-only build. The Penqle tree still carries legacy remnants (`src/game/PlayerBots/`, CMake/config/SQL/README) that Penqle PR [#396 `cleanup/remove-playerbots`](https://github.com/Penqle/tortoise-wow/pull/396) (open, 2026-08-19) removes.
+
 ## Progressive disclosure
 
 * [Capability map](capability-map.md) — start here: public/user-operable surfaces vs internal registries.

@@ -17,6 +17,8 @@ It does not operate, host, or provide access to a public game server. It is not 
 
 A deployment-agnostic knowledge bundle for operating and modifying a solo Turtle WoW 1.18.1 server with the Tortoise core and PlayerBots.
 
+All PlayerBots documentation is source-pinned to the PlayerBots-enabled fork [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow). The base [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) core ships no playerbots logic; its tree still carries legacy playerbots remnants that Penqle PR [#396 `cleanup/remove-playerbots`](https://github.com/Penqle/tortoise-wow/pull/396) (open, 2026-08-19) removes.
+
 Start with:
 
 - [Agent guide](AGENTS.md) for task routing and safety boundaries
