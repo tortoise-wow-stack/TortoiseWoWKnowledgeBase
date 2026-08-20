@@ -1,5 +1,9 @@
 # Directory Update Log
 
+## 2026-08-20
+
+* **PlayerBots provenance:** Scoped the entire `playerbots/` group to the PlayerBots-enabled [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow) fork. The base [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) core ships no playerbots logic — a Penqle-only build has none of the bot commands/config/AI documented here; its tree still carries legacy remnants (`src/game/PlayerBots/`, CMake/config/SQL/README) that Penqle PR [#396 `cleanup/remove-playerbots`](https://github.com/Penqle/tortoise-wow/pull/396) (open, 2026-08-19) removes. Reflected in [agent guide](AGENTS.md), [PlayerBots index](playerbots/index.md), [README](README.md), [project history](history/implementation-plan.md), and the [knowledge index](index.md).
+
 ## 2026-08-18
 
 * **PlayerBots activity modes:** documented the two scheduling modes behind `DisableActivityPriorities` (always-active vs the activity-priority bracket system), the `botActiveAlone` bottom-bracket scope, chat/broadcast throttling gates, and the fresh level-1 start gotchas (`RandomBotMaxLevelChance`, six-zone crowding) in [config](playerbots/config.md). Bracket internals are maintainer-communicated and marked as such; the rest is `.dist`-derived.

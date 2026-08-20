@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # Tortoise WoW server — knowledge bundle (OKF v0.2)
 
-Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW server (Turtle 1.18.1 core + PlayerBots). Entry point: [agent guide](AGENTS.md). Trust is recorded per concept; runtime facts must come from an owner-supplied private deployment record and a fresh read-only check. The PlayerBots capability baseline is pinned to source commit `172ee948e591f8bf1b53ea6389e3102186339f6e`; start at [PlayerBots capability map](playerbots/capability-map.md).
+Deployment-agnostic knowledge for running and modifying a solo Tortoise WoW server (Turtle 1.18.1 core + PlayerBots). Entry point: [agent guide](AGENTS.md). Trust is recorded per concept; runtime facts must come from an owner-supplied private deployment record and a fresh read-only check. The PlayerBots capability baseline is pinned to source commit `172ee948e591f8bf1b53ea6389e3102186339f6e`; start at [PlayerBots capability map](playerbots/capability-map.md). The whole `playerbots/` group is pinned to the Shyalya fork; the base Penqle core has no playerbots ([scope note](playerbots/index.md)).
 
 ## ops
 

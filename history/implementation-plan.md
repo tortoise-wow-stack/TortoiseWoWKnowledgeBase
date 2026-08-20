@@ -17,7 +17,7 @@ sources:
 
 **Related:** [Operational gotchas](/ops/gotchas.md) · [Community findings](/references/community-findings.md)
 
-This bundle documents the lineage originating at [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) and the PlayerBots-enabled fork at [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow). The PlayerBots behavior and command baseline is source-verified against the Shyalya fork; the upstream authors and contributors retain credit for the server implementation.
+This bundle documents the lineage originating at [Penqle/tortoise-wow](https://github.com/Penqle/tortoise-wow) and the PlayerBots-enabled fork at [Shyalya/tortoise-wow](https://github.com/Shyalya/tortoise-wow). The PlayerBots behavior and command baseline is source-verified against the Shyalya fork; the upstream authors and contributors retain credit for the server implementation. The Penqle core itself ships no playerbots logic — the bot baseline documented here exists only in the Shyalya fork. The Penqle tree still carries legacy playerbots remnants (`src/game/PlayerBots/`, CMake/config/SQL/README); Penqle PR [#396 `cleanup/remove-playerbots`](https://github.com/Penqle/tortoise-wow/pull/396) (open, 2026-08-19) strips them.
 
 A concrete deployment should follow a phased plan—preflight audit, storage, matching client data, Compose configuration, disposable first boot, login/restart test, then verified backup—and keep its machine identities, endpoints, accounts, image digests, incident history, and acceptance evidence in an owner-supplied private deployment record outside this shareable bundle.
 
